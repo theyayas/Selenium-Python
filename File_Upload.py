@@ -28,7 +28,7 @@ driver.find_element(By.ID, 'uploadFile').send_keys('D:/Bismillahirrohmaanirrohim
 time.sleep(3)
 
 '''-------------------------CARA 2-------------------------'''
-driver.get('https://gofile.io/welcome')
+'''driver.get('https://gofile.io/welcome')
 driver.find_element(By.XPATH, '//*[@id="mainContent"]/div[3]/div/a/button').click()
 
 driver.find_element(By.XPATH, '//*[@id="filesUpload"]/div/div[1]/div/button').click()
@@ -46,6 +46,6 @@ try:
     print('button sudah diklik')
 except TimeoutException:
     print('tidak berhasil')
-    pass
+    pass'''
 
 time.sleep(5)
