@@ -10,7 +10,7 @@ driver = webdriver.Chrome()
 driver.maximize_window()
 driver.implicitly_wait(3)
 
-'''-------------------------CARA 1-------------------------'''
+'''------------------------- CARA 1 -------------------------'''
 driver.get('https://demoqa.com/')
 
 driver.execute_script('window.scrollTo(0, 300)')    # cara scroll ke bawah
@@ -27,8 +27,8 @@ hati-hati tidak semua website bisa menggunaka cara 1 ini
 driver.find_element(By.ID, 'uploadFile').send_keys('D:/Bismillahirrohmaanirrohim/Selenium-Python/Data_Dummy.pdf')
 time.sleep(3)
 
-'''-------------------------CARA 2-------------------------'''
-'''driver.get('https://gofile.io/welcome')
+'''------------------------- CARA 2 -------------------------'''
+driver.get('https://gofile.io/welcome')
 driver.find_element(By.XPATH, '//*[@id="mainContent"]/div[3]/div/a/button').click()
 
 driver.find_element(By.XPATH, '//*[@id="filesUpload"]/div/div[1]/div/button').click()
@@ -46,6 +46,6 @@ try:
     print('button sudah diklik')
 except TimeoutException:
     print('tidak berhasil')
-    pass'''
+    pass
 
 time.sleep(5)
