@@ -4,6 +4,7 @@ from selenium import webdriver
 mode = webdriver.ChromeOptions()
 mode.headless = True
 
+# menggunakan headless mode (bawah)
 driver = webdriver.Chrome(options = mode)
 driver.get('https://demoqa.com/select-menu')
 print(driver.title)

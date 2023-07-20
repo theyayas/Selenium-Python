@@ -21,7 +21,7 @@ pilihMenu.select_by_visible_text('Aqua')
 time.sleep(3)
 
 '''------------------------- SELECT ONE -------------------------'''
-driver.find_element(By.ID, 'selectOne').send_keys('Mrs.')
-#pyautogui.typewrite('Mrs.')
+driver.find_element(By.ID, 'selectOne').click()
+pyautogui.typewrite('Mrs.')
 pyautogui.press('enter')
 time.sleep(3)

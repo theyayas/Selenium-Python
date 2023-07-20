@@ -19,7 +19,6 @@ time.sleep(2)
 
 driver.find_element(By.XPATH, '//*[@id="datepicker"]').clear()
 driver.find_element(By.XPATH, '//*[@id="datepicker"]').send_keys('01/08/2023')  
-#driver.find_element(By.XPATH, '//*[@id="ui-datepicker-div"]/table/tbody/tr[4]/td[6]/a').click()
 time.sleep(5)
 
 '''------------------------- CARA 2 -------------------------'''
@@ -33,6 +32,5 @@ pyautogui.keyUp('ctrl')         # lepas tombol ctrl
 pyautogui.press('backspace')    # hapus text yang sudah diselect
 
 driver.find_element(By.ID, 'datePickerMonthYearInput').send_keys('01/01/2023')
-
 time.sleep(5)
 
