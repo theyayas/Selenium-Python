@@ -17,6 +17,6 @@ Related to Software Quality Assurance Engineer World that can conduct Unit Testi
 # Pytest: How to configure
 1. Install Pytest Library in Command Prompt using 'pip install pytest'
 2. Just go to VS Code then start coding
-3. Make a function (def) in your Code File. The name of the function should contain the word 'test' in it
+3. Make a function (def) in your Code File. The name of the file and the function should contain the word 'test' in it
 4. To run your code, go to the terminal, type 'pytest your_code_name, ' and press enter. If your terminal isn't in the right folder, type 'cd .\folder_name'
 5. Don't forget to save the file before running the code
