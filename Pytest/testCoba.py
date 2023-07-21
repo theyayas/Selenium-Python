@@ -6,7 +6,7 @@ from selenium.common.exceptions import TimeoutException
 import time
 
 driver = webdriver.Chrome()
-driver.minimize_window()
+driver.maximize_window()
 
 def test_bukaWeb():
     for i in range(2):
