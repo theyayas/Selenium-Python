@@ -4,14 +4,24 @@ from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.common.exceptions import TimeoutException
 import time
+import pytest
 
 driver = webdriver.Chrome()
 driver.maximize_window()
 
-def test_bukaWeb():
+parameter = [
+    ("yahaha", "yohoho"),
+    ("yasingammarkanari@gmail.com", "yohoho"),
+    ("yahaha", "b0t0lm1num"),
+    ("yasingammarkanari@gmail.com", "b0t0lm1num"),
+]
+
+@pytest.mark.parametrize("username, password", parameter)
+
+def test_bukaWeb(username, password):
     for i in range(2):
         driver.get("https://tees.co.id/")
-        driver.implicitly_wait(2)
+        driver.implicitly_wait(5)
 
         '''
         menggunakan WebDriverWait, expected_condition, dan TimeoutException untuk menunggu apakah pup up muncul atau tidak
@@ -28,8 +38,8 @@ def test_bukaWeb():
 
     #malah coba negatif case login yahaha
     driver.find_element(By.XPATH, "//*[@id='navbar']/div[3]/submenu-navbar/div/div/ul[2]/li[3]").click()
-    driver.find_element(By.ID, "username").send_keys("yahahaha")
-    driver.find_element(By.ID, "password").send_keys("yohohoho")
+    driver.find_element(By.ID, "username").send_keys(username)
+    driver.find_element(By.ID, "password").send_keys(password)
     driver.find_element(By.XPATH, "/html/body/div[3]/div/div/login-view/div/div[2]/div/div/form/div[3]/button").click()
     validasi = driver.find_element(By.XPATH, "/html/body/div[3]/div/div/login-view/div/div[2]/div/div/form/p").text
     print("Tidak dapat login syng")
