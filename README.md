@@ -20,3 +20,9 @@ Related to Software Quality Assurance Engineer World that can conduct Unit Testi
 3. Make a function (def) in your Code File. The name of the file and the function should contain the word 'test' in it
 4. To run your code, go to the terminal, type 'pytest your_code_name, ' and press enter. If your terminal isn't in the right folder, type 'cd .\folder_name'
 5. Don't forget to save the file before running the code
+
+# How to get rid of "Error Logging"
+mode = webdriver.ChromeOptions()
+mode.add_experimental_option('excludeSwitches', ['enable-logging'])
+driver = webdriver.Chrome(options=mode)
+
