@@ -22,7 +22,7 @@ Related to Software Quality Assurance Engineer World that can conduct Unit Testi
 5. Don't forget to save the file before running the code
 
 # How to get rid of "Error Logging"
-mode = webdriver.ChromeOptions()
-mode.add_experimental_option('excludeSwitches', ['enable-logging'])
-driver = webdriver.Chrome(options=mode)
+1. mode = webdriver.ChromeOptions()
+2. mode.add_experimental_option('excludeSwitches', ['enable-logging'])
+3. driver = webdriver.Chrome(options=mode)
 
