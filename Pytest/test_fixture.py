@@ -47,6 +47,7 @@ login_wrong = [
 ]
 
 # Login
+@pytest.mark.logintest
 @pytest.mark.parametrize("nama, password", login_wrong)         # pytest.mark.parametrize untuk mengambil nilai-nilai dari tupple sebagai inputan
                                                                 # syntaxnya gini ya sayang ("nama_parameter1, nama_parameter2", nama_tupple)
 def test_login(setup, nama, password):
@@ -59,6 +60,7 @@ def test_login(setup, nama, password):
     assert penjagaan == "Username atau password salah."         # Validasi
 
 # Register
+@pytest.mark.registertest
 @pytest.mark.parametrize('nama, username, email, password', register)
 def test_register(setup, nama, username, email, password):
     setup.find_element(By.LINK_TEXT, "Daftar").click()
