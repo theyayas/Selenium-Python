@@ -27,11 +27,21 @@ def setup():
 
 @pytest.mark.welcome
 def test_welcome(setup):
-    webTitle = setup.title
-    tes = setup.find_element(By.XPATH, '//*[@id="b1-LayoutWrapper"]/div[3]/div[1]/div/div[1]/span').text
-    #print(webTitle)
+    time.sleep(3)
+    title = setup.title
 
-    assert tes == "Download aplikasi ACC ONE"
+    #assert title == "Kredit Mobil & Fasilitas Dana - ACC"
+    assert setup.find_element(By.XPATH, '//*[@id="$b5"]/div/div[3]/div/div/div/div[1]/div/a[1]/div/div[1]') is not None
+    print("Beli Mobil Baru passed")
+    print(title)
+    assert setup.find_element(By.XPATH, '//*[@id="$b5"]/div/div[3]/div/div/div/div[1]/div/a[2]/div/div[1]/div[2]') is not None
+    print("Beli Mobil Bekas passed")
+    assert setup.find_element(By.XPATH, '//*[@id="$b5"]/div/div[3]/div/div/div/div[1]/div/a[3]/div/div[1]/div[2]') is not None
+    print("Jual Mobil passed")
+    assert setup.find_element(By.XPATH, '//*[@id="$b5"]/div/div[3]/div/div/div/div[2]/div[1]/div[1]').text == "Temukan Mobil Impianmu"
+    print("Temukan Mobil Impianmu")
+    assert setup.find_element(By.XPATH, '//*[@id="b5-b1-Column1"]/div[2]') is not None
+    print("Kalkulator Kredit")
 
 #=================================================================================================================
 #                                                LOGIN WRONG
@@ -85,7 +95,7 @@ def test_validasi_username(setup, username):
 #=================================================================================================================
 
 login_validasi_password = [
-    (" "), 
+    (" "),
     ("yahaha"),
     ("yahahaha"),
     ("123456"),
@@ -98,5 +108,9 @@ def test_validasi_password(setup, password):
     setup.find_element(By.XPATH, '//*[@id="b4-$b3"]/div/a').click()
     setup.find_element(By.ID, "b5-Password2").send_keys(password)
     validasi = setup.find_element(By.XPATH, '//*[@id="b5-InputKataSandi3"]/span/span').text
+    time.sleep(3)
 
-    assert (validasi == "Kata Sandi harus diisi") or (validasi == "Kata Sandi minimal 7 Karakter") or (validasi == "Format belum sesuai")
+    assert (validasi == "Kata Sandi harus diisi") or (validasi == "Format belum sesuai") # or (validasi == "Kata Sandi minimal 7 Karakter") 
+    print(validasi)
+
+
