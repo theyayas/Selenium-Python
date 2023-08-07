@@ -113,4 +113,44 @@ def test_validasi_password(setup, password):
     assert (validasi == "Kata Sandi harus diisi") or (validasi == "Format belum sesuai") # or (validasi == "Kata Sandi minimal 7 Karakter") 
     print(validasi)
 
+#=================================================================================================================
+#                                                        YUNA
+#=================================================================================================================
+
+yuna_wrong = [
+    ("sp736", "yahaha", "88"),
+    ("spr4", "yahaha@muh", "88"),
+    ("sp", "6732", "88r"),
+]
+
+@pytest.mark.yuna
+@pytest.mark.parametrize("nama, email, nomor", yuna_wrong)
+def test_validasi_yuna(setup, nama, email, nomor):
+    setup.find_element(By.XPATH, '//*[@id="b1-b7-yuna_desktop"]').click()
+    setup.find_element(By.XPATH, '//*[@id="b1-b7-$b2"]/div/div/div[3]/button[1]').click()
+    time.sleep(2)
+
+    setup.switch_to.frame(setup.find_element(By.TAG_NAME, 'iframe'))
+
+    setup.find_element(By.XPATH, '//*[@id="name"]').send_keys(nama)
+    setup.find_element(By.XPATH, '//*[@id="email"]').send_keys(email)
+    setup.find_element(By.XPATH, '//*[@id="telephone"]').send_keys(nomor)
+    setup.find_element(By.XPATH, '//*[@id="login"]/button').click()
+
+    warning_name = setup.find_element(By.XPATH, '//*[@id="warning-name"]').text
+    warning_email = setup.find_element(By.XPATH, '//*[@id="warning-email"]').text
+    warning_number = setup.find_element(By.XPATH, '//*[@id="warning-phone"]').text
+
+    assert warning_name is not None
+    assert warning_name == "Invalid name min 3 chars alphabet"
+    print(warning_name, " - Berhasil")
+
+    assert warning_email is not None
+    assert warning_email == "Please key in valid email address"
+    print(warning_email, " - Berhasil")
+
+    assert warning_number is not None
+    assert warning_number == "Please enter minimum 10-12 digit"
+    print(warning_number, " - Berhasil")
+
 
