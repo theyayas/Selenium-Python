@@ -3,6 +3,7 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.common.exceptions import TimeoutException
+from selenium.webdriver import ActionChains
 import time
 import pytest
 
@@ -27,10 +28,10 @@ def setup():
 
 @pytest.mark.welcome
 def test_welcome(setup):
-    time.sleep(3)
+    time.sleep(5)
     title = setup.title
 
-    #assert title == "Kredit Mobil & Fasilitas Dana - ACC"
+    assert title == "Kredit Mobil & Fasilitas Dana - ACC"
     assert setup.find_element(By.XPATH, '//*[@id="$b5"]/div/div[3]/div/div/div/div[1]/div/a[1]/div/div[1]') is not None
     print("Beli Mobil Baru passed")
     print(title)
@@ -153,4 +154,62 @@ def test_validasi_yuna(setup, nama, email, nomor):
     assert warning_number == "Please enter minimum 10-12 digit"
     print(warning_number, " - Berhasil")
 
+
+#=================================================================================================================
+#                                                 BELI MOBIL
+#=================================================================================================================
+
+@pytest.mark.mobil_bekas
+def test_mobil_bekas(setup):
+    time.sleep(2)
+
+    jual_beli = setup.find_element(By.LINK_TEXT, "Jual/Beli Mobil")
+    jual_beli2 = ActionChains(setup).move_to_element(jual_beli)
+    jual_beli2.perform()
+
+    setup.find_element(By.LINK_TEXT, "Beli Mobil Bekas").click()
+    time.sleep(2)
+
+    title = setup.title
+
+    assert title == "ACC | Daftar Harga Mobil Bekas"
+    print("Berhasil masuk ke halaman", title)
+
+    
+#=================================================================================================================
+#                                                FASILITAS DANA
+#=================================================================================================================
+
+@pytest.mark.fasilitas_dana
+def test_fasilitas_dana(setup):
+    
+    cari_dana = setup.find_element(By.LINK_TEXT, 'Cari Dana')
+    cari_dana2 = ActionChains(setup).move_to_element(cari_dana)
+    cari_dana2.perform()
+    setup.find_element(By.LINK_TEXT, 'Fasilitas Dana').click()
+
+    bpkb = setup.find_element(By.XPATH, '//*[@id="b5-b3-Column1"]/div/div[1]/img')
+    bunga = setup.find_element(By.XPATH, '//*[@id="b5-b3-Column2"]/div/div[1]/img')
+    pencairan_hingga = setup.find_element(By.XPATH, '//*[@id="b5-b3-Column3"]/div/div[1]/img')
+    pencairan_cepat = setup.find_element(By.XPATH, '//*[@id="b5-b3-Column4"]/div/div[1]/img')
+    cukup_isi_form = setup.find_element(By.XPATH, '//*[@id="b5-b3-Column5"]/div/div[1]/img')
+    usia_mobil_hingga = setup.find_element(By.XPATH, '//*[@id="b5-b3-Column6"]/div/div[1]/img')
+
+    assert bpkb is not None
+    print("BPKB is present")
+
+    assert bunga is not None
+    print("Bunga is present")
+
+    assert pencairan_hingga is not None
+    print("Pencairan Hingga 85 persen Harga Mobil is present")
+
+    assert pencairan_cepat is not None
+    print("Pencairan Cepat is present")
+
+    assert cukup_isi_form is not None
+    print("Cukup Isi Form is present")
+
+    assert usia_mobil_hingga is not None
+    print("Usia Mobil Hingga 20 Tahun is present")
 
