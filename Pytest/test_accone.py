@@ -65,12 +65,12 @@ def test_login(setup, username, password):
     setup.find_element(By.ID, "b5-Button").click()
 
     try:
-        alert = WebDriverWait(setup, 5).until(EC.alert_is_present())
+        alert = WebDriverWait(setup, 10).until(EC.alert_is_present())
         print(alert)
         assert "Username atau Password Salah" in alert #, f"Expected alert message not found: '{alert.text}'"
 
     except TimeoutException:
-        print("berhasil login")
+        raise Exception("salah") #print("berhasil login")
 
 #=================================================================================================================
 #                                             VALIDASI USERNAME
