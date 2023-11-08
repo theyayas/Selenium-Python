@@ -182,11 +182,13 @@ def test_mobil_bekas(setup):
 
 @pytest.mark.fasilitas_dana
 def test_fasilitas_dana(setup):
+    setup.implicitly_wait(20)
     
     cari_dana = setup.find_element(By.LINK_TEXT, 'Cari Dana')
     cari_dana2 = ActionChains(setup).move_to_element(cari_dana)
     cari_dana2.perform()
     setup.find_element(By.LINK_TEXT, 'Fasilitas Dana').click()
+    time.sleep(5)
 
     bpkb = setup.find_element(By.XPATH, '//*[@id="b5-b3-Column1"]/div/div[1]/img')
     bunga = setup.find_element(By.XPATH, '//*[@id="b5-b3-Column2"]/div/div[1]/img')

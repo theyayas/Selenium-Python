@@ -5,7 +5,7 @@ import time
 
 driver = webdriver.Chrome()
 driver.maximize_window()
-driver.implicitly_wait(3)
+driver.implicitly_wait(10)
 driver.get('https://demoqa.com/')
 
 driver.execute_script('window.scrollTo(0,300)')
